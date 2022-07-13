@@ -1,0 +1,17 @@
+type Imc {
+	id: ID!
+	altura: Float!
+	peso: Float!
+}
+type Mutation{
+	createImc(name:String!):Imc!
+}
+type Query{
+	findAllImc: [Imc]!
+	countImc: Float!
+}
+input CreateImcInput{
+	id: ID!
+	altura: Float!
+	peso: Float!
+}

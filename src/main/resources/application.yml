@@ -1,0 +1,40 @@
+elastic-query-service:
+  version: v1
+  custom-audience: elastic-query-service
+
+server:
+  port: 8089
+springdoc:
+  swagger-ui:
+    path: /api-documentation.html
+    operations-sorter: method
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: admin
+      password: example
+      username: root
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8180/auth/realms/microservices-realm
+          jwk-set-uri: http://localhost:8180/auth/realms/microservices-realm/protocol/openid-connect/certs
+graphql:
+  servlet:
+    mapping: /apis/graphql
+    enable: true
+    corsEnabled: true
+    context-setting: per_request_with_instrumentation
+    exception-handlers-enabled: true
+graphiql:
+  pageTitle: Graphiql
+  enabled: true
+  mapping: /graphiql
+  endpoint:
+    graphql: /apis/graphql
+  static:
+    basePath: /
+
